@@ -13,6 +13,8 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 require(__DIR__ . '/connect_db.php');
 
 // Function to get email subscribers
+// Gets email subscribers in database in descening order
+// Returns array of subscribes or ends on database error
 function getEmailSubscribers($dbc) {
     $query = "SELECT * FROM email_subscribers ORDER BY subscription_date DESC";
     $result = $dbc->query($query);
@@ -23,6 +25,7 @@ function getEmailSubscribers($dbc) {
 }
 
 // Function to get survey responses
+// Similar as above
 function getSurveyResponses($dbc) {
     $query = "SELECT project_name, postcode, knew_about_project, excited_about_project, 
               comments, submission_date 
