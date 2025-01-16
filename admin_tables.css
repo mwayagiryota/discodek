@@ -44,12 +44,11 @@
 
 /* Status colours for subscriber status */
 .data-table td.status-subscribed {
-    color: #27ae60;    /* Green color for active subscribers */
+    color: #27ae60;   
 }
 
 .data-table td.status-unsubscribed {
-    color: #c0392b;    /* Red colour for unsubscribed users */
-}
+    color: #c0392b;    
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
