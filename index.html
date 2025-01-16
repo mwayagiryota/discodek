@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- External stylesheet links -->
+    <!-- Bubblegum text for CC -->
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+    <link rel="stylesheet" href="css/projgrid.css">
+    <link rel="stylesheet" href="css/timelinegrid.css">
+    <link rel="stylesheet" href="css/popupptl.css"> 
+    <link rel="stylesheet" href="css/column_display.css">  
+    <link rel="stylesheet" href="css/navbar.css">  
+    <link rel="stylesheet" href="css/survey.css">  
+    <link rel="stylesheet" href="css/polaroid.css">  
+    <link rel="stylesheet" href="css/welcome.css">  
+    <link rel="stylesheet" href="css/accesibility.css">
+
+    <!-- Responsive design meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <!-- Main header section and nav bar -->
+    <header class="header">
+        <h1>Chesterfield Connect</h1>
+    </header>
+    <nav class="topnav" id="myTopnav">
+        <div class="nav-links">
+            <a href="index.php" class="active">Home</a>
+            <a href="includes/email_updates.html">Email updates</a>  
+            <a href="https://www.chesterfield.gov.uk/">Chesterfield Council</a>
+            <a href="https://www.derbyshiretimes.co.uk/news">Chesterfield News</a>
+<a href="includes/admin_login.php">Admin</a>        
+</div>
+<!--Chesterfield meetings link -->
+        <div class="nav-calendar">
+            <a href="https://chesterfield.moderngov.co.uk/mgCalendarMonthView.aspx" target="_blank" class="calendar-link">
+                <span class="calendar-icon">📅</span>
+                View Council Meetings
+            </a>
+        </div>
+    </div>
+<!--Accesibility controls nav bar -->
+        <div class="accessibility-controls">
+            <button class="accessibility-btn" onclick="toggleHighContrast()">
+                <span class="icon"></span>
+                High Contrast
+            </button>
+            <div class="text-size-controls">
+                <button class="accessibility-btn" onclick="decreaseText()">
+                    <span class="icon">A-</span>
+                </button>
+                <button class="accessibility-btn" onclick="increaseText()">
+                    <span class="icon">A+</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main image for the polaroid effect -->
+    <div class="wrapper">
+        <!-- First polaroid -->
+        <div class="item">
+            <div class="polaroid">
+                <img src="img/chesterfield main town.jpeg" alt="Chesterfield Town from above">
+                <div class="caption">Chesterfield town from above</div>
+            </div>
+        </div>
+        
+        <!-- Second polaroid -->
+        <div class="item">
+            <div class="polaroid">
+                <img src="img/chesterfield_main2.jpg" alt="Chesterfield Crooked Spire">
+                <div class="caption">Crooked Spire</div>
+            </div>
+        </div>
+        
+        <!-- Third polaroid -->
+        <div class="item">
+            <div class="polaroid">
+                <img src="img/chesterfield_main3.jpg" alt="Chesterfield Market">
+                <div class="caption">Market Area</div>
+            </div>
+        </div>
+        
+        <!-- Fourth polaroid -->
+        <div class="item">
+            <div class="polaroid">
+                <img src="img/chesterfield_main4.jpeg" alt="Chesterfield Nature">
+                <div class="caption">Chesterfield Nature</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mini about section -->
+    <div class="welcome-section">
+        <h2>Welcome to Chesterfield Connect!</h2>
+        <p>This is a prototype of a website to see and engage with some of Chesterfield's development projects - both past and present. Explore the ongoing and completed developments, and make your voice heard through our feedback forms or by signing up for email updates.</p>
+    </div>
+
+    <!-- Project timeline section -->
+    <!-- Column 1: Major development projects -->
+    <div class="timeline-column" id="column1">
+        <div class="timeline-item" onclick="showForm('townCenterForm')">Town Center</div>
+        <div class="timeline-item" onclick="showForm('watersideForm')">Waterside</div>
+        <div class="timeline-item" onclick="showForm('peakEstateForm')">Peak Estate</div>
+        <div class="pagination-controls">
+            <button onclick="nextColumn()">Next →</button>
+        </div>
+    </div>
+
+    <!-- Column 2: Infrastructure projects -->
+    <div class="timeline-column" id="column2" style="display: none;">
+        <div class="timeline-item" onclick="showForm('stationPlanForm')">Station Plan</div>
+        <div class="timeline-item" onclick="showForm('northernGatewayForm')">Northern Gateway</div>
+        <div class="timeline-item" onclick="showForm('queensParkSportForm')">Queenspark Sports Centre</div>
+        <div class="pagination-controls">
+            <button onclick="previousColumn()">← Back</button>
+            <button onclick="nextColumn()">Next →</button>
+        </div>
+    </div>
+
+    <!-- Column 3: Ongoing and completed projects -->
+    <div class="timeline-column" id="column3" style="display: none;">
+        <div class="timeline-item" onclick="showForm('sheepbridgeForm')">Sheepbridge Lane</div>
+        <div class="timeline-item" onclick="showForm('staveleyForm')">Staveley Town Deal</div>
+        <div class="timeline-item" onclick="showForm('stHelenaForm')">St Helena's Campus</div>
+        <div class="pagination-controls">
+            <button onclick="previousColumn()">← Back</button>
+        </div>
+    </div>
+
+    <!-- Overlay for popup background -->
+    <div id="overlay"></div>
+
+    <!-- Form Popups -->
+    <!-- Column 1 Popups -->
+    <!-- Form popup for Town Center -->
+    <div class="form-popup" id="townCenterForm">
+        <form class="form-container">
+            <h1>Town Center</h1>
+            <label for="budget"><b>Budget</b></label>
+            <input type="text" value="£20M" name="budget" readonly>
+            <label for="timeline"><b>Timeline</b></label>
+            <input type="text" value="2024-2026" name="timeline" readonly>
+            <label for="location"><b>Location</b></label>
+            <input type="text" value="Chesterfield Town Center" name="location" readonly>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <!-- Form popup for Waterside -->
+    <div class="form-popup" id="watersideForm">
+        <form class="form-container">
+            <h1>Waterside</h1>
+            <label for="budget"><b>Budget</b></label>
+            <input type="text" value="£340M" name="budget" readonly>
+            <label for="timeline"><b>Timeline</b></label>
+            <input type="text" value="2009-2022" name="timeline" readonly>
+            <label for="location"><b>Location</b></label>
+            <input type="text" value="Brimington Road" name="location" readonly>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <!-- Form popup for Peak Estate -->
+    <div class="form-popup" id="peakEstateForm">
+        <form class="form-container">
+            <h1>Peak Estate</h1>
+            <label for="budget"><b>Budget</b></label>
+            <input type="text" value="£200M" name="budget" readonly>
+            <label for="timeline"><b>Timeline</b></label>
+            <input type="text" value="2016-2026" name="timeline" readonly>
+            <label for="location"><b>Location</b></label>
+            <input type="text" value="Peak District" name="location" readonly>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <!-- Column 2 Popups -->
+    <!-- Form popup for Station Plan -->
+    <div class="form-popup" id="stationPlanForm">
+        <form class="form-container">
+            <h1>Station Plan</h1>
+            <label for="budget"><b>Budget</b></label>
+            <input type="text" value="£40M" name="budget" readonly>
+            <label for="timeline"><b>Timeline</b></label>
+            <input type="text" value="2021-Now" name="timeline" readonly>
+            <label for="location"><b>Location</b></label>
+            <input type="text" value="Chesterfield Rail Station" name="location" readonly>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <!-- Form popup for Northern Gateway -->
+    <div class="form-popup" id="northernGatewayForm">
+        <form class="form-container">
+            <h1>Northern Gateway</h1>
+            <label for="budget"><b>Budget</b></label>
+            <input type="text" value="£50M" name="budget" readonly>
+            <label for="timeline"><b>Timeline</b></label>
+            <input type="text" value="2023-Now" name="timeline" readonly>
+            <label for="location"><b>Location</b></label>
+            <input type="text" value="Saltergate" name="location" readonly>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <!-- Form popup for Queens Park Sports Center -->
+    <div class="form-popup" id="queensParkSportForm">
+        <form class="form-container">
+            <h1>Queens Park Sports Center</h1>
+            <label for="budget"><b>Budget</b></label>
+            <input type="text" value="£6.75" name="budget" readonly>
+            <label for="timeline"><b>Timeline</b></label>
+            <input type="text" value="2015-2016" name="timeline" readonly>
+            <label for="location"><b>Location</b></label>
+            <input type="text" value="Queens Park Sports Center" name="location" readonly>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <!-- Column 3 Popups -->
+    <!-- Form popup for Sheepbridge Lane -->
+    <div class="form-popup" id="sheepbridgeForm">
+        <form class="form-container">
+            <h1>Sheepbridge Lane</h1>
+            <label for="budget"><b>Budget</b></label>
+            <input type="text" value="£8M" name="budget" readonly>
+            <label for="timeline"><b>Timeline</b></label>
+            <input type="text" value="2024-Currently" name="timeline" readonly>
+            <label for="location"><b>Location</b></label>
+            <input type="text" value="Sheepbridge Lane" name="location" readonly>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <!-- Form popup for Staveley Town Deal -->
+    <div class="form-popup" id="staveleyForm">
+        <form class="form-container">
+            <h1>Staveley Town Deal</h1>
+            <label for="budget"><b>Budget</b></label>
+            <input type="text" value="£25.2M" name="budget" readonly>
+            <label for="timeline"><b>Timeline</b></label>
+            <input type="text" value="2021-Currently" name="timeline" readonly>
+            <label for="location"><b>Location</b></label>
+            <input type="text" value="Peak District" name="location" readonly>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <!-- Form popup for St Helena -->
+    <div class="form-popup" id="stHelenaForm">
+        <form class="form-container">
+            <h1>St Helenas Campus</h1>
+            <label for="budget"><b>Budget</b></label>
+            <input type="text" value="£6.9M" name="budget" readonly>
+            <label for="timeline"><b>Timeline</b></label>
+            <input type="text" value="2014-2016" name="timeline" readonly>
+            <label for="location"><b>Location</b></label>
+            <input type="text" value="Chesterfield Sheffield Road" name="location" readonly>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <!-- Image gallery grid -->
+    <div class="project-gallery">
+        <!-- Column 1: Projects -->
+        <div class="project-grid" id="column1-images">
+            <!-- Crooked Spire -->
+            <div class="project-item">
+                <img src="img/crooked spire.jpeg" alt="Crooked Spire">
+            </div>
+            <div class="project-item">
+                <h3>Crooked Spire</h3>
+                <p>The council is working with the Church of St Mary and All Saints to develop Crooked Spire. Plans include new lightning to help the apperance of the spire at night and a link into Rykneld Square from the Crooked Spire.</p>
+            </div>
+            
+          <!-- Crooked Spire Survey Popup section -->
+<div class="survey-section">
+    <button class="survey-button" data-project="crookedSpire">Share Your Feedback</button>
+    <div class="survey-popup" id="survey-crookedSpire" style="display: none;">
+        <form class="survey-form" action="../includes/survey_handler.php" method="POST">
+                        <h3>Quick Survey</h3>
+                        <div class="form-group">
+                            <label for="postcode-crookedSpire">Your postcode:</label>
+                            <input type="text" id="postcode-crookedSpire" name="postcode" required>
+                            <span class="error" id="postcodeError-crookedSpire"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Did you know about this project?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="knewYes-crookedSpire" name="knew-crookedSpire" value="yes" required>
+                                <label for="knewYes-crookedSpire">Yes</label>
+                                <input type="radio" id="knewNo-crookedSpire" name="knew-crookedSpire" value="no">
+                                <label for="knewNo-crookedSpire">No</label>
+                                </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Does this excite you?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="excitedYes-crookedSpire" name="excited-crookedSpire" value="yes" required>
+                                <label for="excitedYes-crookedSpire">Yes</label>
+                                <input type="radio" id="excitedNo-crookedSpire" name="excited-crookedSpire" value="no">
+                                <label for="excitedNo-crookedSpire">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments-crookedSpire">Any other comments?</label>
+                            <textarea id="comments-crookedSpire" name="comments" maxlength="200"></textarea>
+                            <span class="chars-left" id="charsLeft-crookedSpire">200 characters remaining</span>
+                        </div>
+                                    <!-- To tell the PHP code where it's going to -->
+                                      <!-- Rest of the code is same make sure to insert this -->
+            <input type="hidden" name="project" value="crookedSpire">
+                        <div class="button-group">
+                            <button type="submit" class="submit-btn">Submit</button>
+                            <button type="button" class="close-btn" onclick="closeSurveyForm('crookedSpire')">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Memorial Hall-->
+            <div class="project-item">
+                <img src="img/stephenson memorial hall.jpg" alt="Memorial Hall">
+            </div>
+            <div class="project-item">
+                <h3>Memorial Hall</h3>
+                <p>Refurbishment and expansion. An extended theatre, a cafe bar, a refined museum and gallery space.</p>
+            </div>
+            <!-- Memorial Hall Survey Popup section -->
+            <div class="survey-section">
+<button class="survey-button" data-project="memorialHall">Share Your Feedback</button>
+                <div class="survey-popup" id="survey-memorialHall" style="display: none;">
+    <form class="survey-form" action="../includes/survey_handler.php" method="POST">
+                        <h3>Quick Survey</h3>
+                        <div class="form-group">
+                            <label for="postcode-memorialHall">Your postcode:</label>
+                            <input type="text" id="postcode-memorialHall" name="postcode" required>
+                            <span class="error" id="postcodeError-memorialHall"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Did you know about this project?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="knewYes-memorialHall" name="knew-memorialHall" value="yes" required>
+                                <label for="knewYes-memorialHall">Yes</label>
+                                <input type="radio" id="knewNo-memorialHall" name="knew-memorialHall" value="no">
+                                <label for="knewNo-memorialHall">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Does this excite you?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="excitedYes-memorialHall" name="excited-memorialHall" value="yes" required>
+                                <label for="excitedYes-memorialHall">Yes</label>
+                                <input type="radio" id="excitedNo-memorialHall" name="excited-memorialHall" value="no">
+                                <label for="excitedNo-memorialHall">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments-memorialHall">Any other comments?</label>
+                            <textarea id="comments-memorialHall" name="comments" maxlength="200"></textarea>
+                            <span class="chars-left" id="charsLeft-memorialHall">200 characters remaining</span>
+                        </div>
+    <input type="hidden" name="project" value="memorialHall">
+                        <div class="button-group">
+                            <button type="submit" class="submit-btn">Submit</button>
+                            <button type="button" class="close-btn" onclick="closeSurveyForm('memorialHall')">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Waterside -->
+            <div class="project-item">
+                <img src="img/waterside.jpg" alt="Waterside">
+            </div>
+            <div class="project-item">
+                <h3>Waterside</h3>
+                <p>5 areas; Basin Square, Waterside Quarter, Waterfront, Riverside East and Station Place. New homes, offices, hotels, multistorey car park and open spaces alongside the canal.</p>
+            </div>
+            <!-- Waterside Survey-->
+            <div class="survey-section">
+ <button class="survey-button" data-project="waterside">Share Your Feedback</button>
+                <div class="survey-popup" id="survey-waterside" style="display: none;">
+    <form class="survey-form" action="../includes/survey_handler.php" method="POST">
+                        <h3>Quick Survey</h3>
+                        <div class="form-group">
+                            <label for="postcode-waterside">Your postcode:</label>
+                            <input type="text" id="postcode-waterside" name="postcode" required>
+                            <span class="error" id="postcodeError-waterside"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Did you know about this project?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="knewYes-waterside" name="knew-waterside" value="yes" required>
+                                <label for="knewYes-waterside">Yes</label>
+                                <input type="radio" id="knewNo-waterside" name="knew-waterside" value="no">
+                                <label for="knewNo-waterside">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Does this excite you?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="excitedYes-waterside" name="excited-waterside" value="yes" required>
+                                <label for="excitedYes-waterside">Yes</label>
+                                <input type="radio" id="excitedNo-waterside" name="excited-waterside" value="no">
+                                <label for="excitedNo-waterside">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments-waterside">Any other comments?</label>
+                            <textarea id="comments-waterside" name="comments" maxlength="200"></textarea>
+                            <span class="chars-left" id="charsLeft-waterside">200 characters remaining</span>
+                        </div>
+    <input type="hidden" name="project" value="waterside">
+                        <div class="button-group">
+                            <button type="submit" class="submit-btn">Submit</button>
+                            <button type="button" class="close-btn" onclick="closeSurveyForm('waterside')">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Peak Estate-->
+            <div class="project-item">
+                <img src="img/peak_estate.jpg" alt="Peak Estate">
+            </div>
+            <div class="project-item">
+                <h3>Peak Estate</h3>
+                <p>Sustainable, ongoing tourist project near the Peak District National Park, featuring a zero-carbon travel hub, green education, and year-round accommodations, leisure, and wellness facilities.</p>
+            </div>
+            <!-- Peak Estate Survey-->
+            <div class="survey-section">
+                <button class="survey-button" data-project="peakEstate">Share Your Feedback</button>
+                <div class="survey-popup" id="survey-peakEstate" style="display: none;">
+                       <form class="survey-form" action="../includes/survey_handler.php" method="POST">
+                        <h3>Quick Survey</h3>
+                        <div class="form-group">
+                            <label for="postcode-peakEstate">Your postcode:</label>
+                            <input type="text" id="postcode-peakEstate" name="postcode" required>
+                            <span class="error" id="postcodeError-peakEstate"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Did you know about this project?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="knewYes-peakEstate" name="knew-peakEstate" value="yes" required>
+                                <label for="knewYes-peakEstate">Yes</label>
+                                <input type="radio" id="knewNo-peakEstate" name="knew-peakEstate" value="no">
+                                <label for="knewNo-peakEstate">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Does this excite you?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="excitedYes-peakEstate" name="excited-peakEstate" value="yes" required>
+                                <label for="excitedYes-peakEstate">Yes</label>
+                                <input type="radio" id="excitedNo-peakEstate" name="excited-peakEstate" value="no">
+                                <label for="excitedNo-peakEstate">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments-peakEstate">Any other comments?</label>
+                            <textarea id="comments-peakEstate" name="comments" maxlength="200"></textarea>
+                            <span class="chars-left" id="charsLeft-peakEstate">200 characters remaining</span>
+                        </div>
+    <input type="hidden" name="project" value="peakEstate">
+                        <div class="button-group">
+                            <button type="submit" class="submit-btn">Submit</button>
+                            <button type="button" class="close-btn" onclick="closeSurveyForm('peakEstate')">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 2: Infrastructure -->
+<div class="project-grid" id="column2-images">
+            <!-- Station Plan -->
+            <div class="project-item">
+                <img src="img/station_plan.png" alt="Station Plan">
+            </div>
+            <div class="project-item">
+                <h3>Station Plan</h3>
+                <p>The Station Master Plan includes new development plots creating 850+ jobs, a link road, improved pedestrian and cycle access, a multi-storey car park with EV charging, a cycle hub, green spaces, and enhanced station facilities.</p>
+            </div>
+            <!-- Station Plan Survey-->
+            <div class="survey-section">
+                <button class="survey-button" data-project="stationPlan">Share Your Feedback</button>
+                <div class="survey-popup" id="survey-stationPlan" style="display: none;">
+                     <form class="survey-form" action="../includes/survey_handler.php" method="POST">
+                        <h3>Quick Survey</h3>
+                        <div class="form-group">
+                            <label for="postcode-stationPlan">Your postcode:</label>
+                            <input type="text" id="postcode-stationPlan" name="postcode" required>
+                            <span class="error" id="postcodeError-stationPlan"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Did you know about this project?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="knewYes-stationPlan" name="knew-stationPlan" value="yes" required>
+                                <label for="knewYes-stationPlan">Yes</label>
+                                <input type="radio" id="knewNo-stationPlan" name="knew-stationPlan" value="no">
+                                <label for="knewNo-stationPlan">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Does this excite you?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="excitedYes-stationPlan" name="excited-stationPlan" value="yes" required>
+                                <label for="excitedYes-stationPlan">Yes</label>
+                                <input type="radio" id="excitedNo-stationPlan" name="excited-stationPlan" value="no">
+                                <label for="excitedNo-stationPlan">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments-stationPlan">Any other comments?</label>
+                            <textarea id="comments-stationPlan" name="comments" maxlength="200"></textarea>
+                            <span class="chars-left" id="charsLeft-stationPlan">200 characters remaining</span>
+                        </div>
+    <input type="hidden" name="project" value="stationPlan">
+                        <div class="button-group">
+                            <button type="submit" class="submit-btn">Submit</button>
+                            <button type="button" class="close-btn" onclick="closeSurveyForm('stationPlan')">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Northern Gateway -->
+            <div class="project-item">
+                <img src="img/nothern_gateway.jpg" alt="Northern Gateway">
+            </div>
+            <div class="project-item">
+                <h3>Northern Gateway</h3>
+                <p>The Northern Gateway scheme has created 500 jobs, added an enterprise center, car park, and street improvements, and redeveloped the former Co-op store with public and private funding.</p>
+            </div>
+            <!-- Northern Gateway Survey-->
+            <div class="survey-section">
+                <button class="survey-button" data-project="northernGateway">Share Your Feedback</button>
+                <div class="survey-popup" id="survey-northernGateway" style="display: none;">
+                       <form class="survey-form" action="../includes/survey_handler.php" method="POST">
+                        <h3>Quick Survey</h3>
+                        <div class="form-group">
+                            <label for="postcode-northernGateway">Your postcode:</label>
+                            <input type="text" id="postcode-northernGateway" name="postcode" required>
+                            <span class="error" id="postcodeError-northernGateway"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Did you know about this project?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="knewYes-northernGateway" name="knew-northernGateway" value="yes" required>
+                                <label for="knewYes-northernGateway">Yes</label>
+                                <input type="radio" id="knewNo-northernGateway" name="knew-northernGateway" value="no">
+                                <label for="knewNo-northernGateway">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Does this excite you?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="excitedYes-northernGateway" name="excited-northernGateway" value="yes" required>
+                                <label for="excitedYes-northernGateway">Yes</label>
+                                <input type="radio" id="excitedNo-northernGateway" name="excited-northernGateway" value="no">
+                                <label for="excitedNo-northernGateway">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments-northernGateway">Any other comments?</label>
+                            <textarea id="comments-northernGateway" name="comments" maxlength="200"></textarea>
+                            <span class="chars-left" id="charsLeft-northernGateway">200 characters remaining</span>
+                        </div>
+    <input type="hidden" name="project" value="northernGateway">
+                        <div class="button-group">
+                            <button type="submit" class="submit-btn">Submit</button>
+                            <button type="button" class="close-btn" onclick="closeSurveyForm('northernGateway')">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Queens Park Sports Centre -->
+            <div class="project-item">
+                <img src="img/qp_sports.jpeg" alt="Queens Park Sports Centre">
+            </div>
+            <div class="project-item">
+                <h3>Queens Park Sports Centre</h3>
+                <p>The facility includes an 8-lane pool, sports courts, gym, studio space, squash courts, a learner pool, café, midwifery center, training rooms, and changing facilities, with free parking for up to 150 cars.</p>
+            </div>
+            <!-- Queens Park Sports Centre Survey-->
+            <div class="survey-section">
+                <button class="survey-button" data-project="queensParkSports">Share Your Feedback</button>
+                <div class="survey-popup" id="survey-queensParkSports" style="display: none;">
+             <form class="survey-form" action="../includes/survey_handler.php" method="POST">
+                        <h3>Quick Survey</h3>
+                        <div class="form-group">
+                            <label for="postcode-queensParkSports">Your postcode:</label>
+                            <input type="text" id="postcode-queensParkSports" name="postcode" required>
+                            <span class="error" id="postcodeError-queensParkSports"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Did you know about this project?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="knewYes-queensParkSports" name="knew-queensParkSports" value="yes" required>
+                                <label for="knewYes-queensParkSports">Yes</label>
+                                <input type="radio" id="knewNo-queensParkSports" name="knew-queensParkSports" value="no">
+                                <label for="knewNo-queensParkSports">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                                       <label>Are you happy with the end result?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="satisfiedYes-queensParkSports" name="satisfied-queensParkSports" value="yes" required>
+                                <label for="satisfiedYes-queensParkSports">Yes</label>
+                                <input type="radio" id="satisfiedNo-queensParkSports" name="satisfied-queensParkSports" value="no">
+                                <label for="satisfiedNo-queensParkSports">No</label>
+                            </div>
+                            </div>
+                        <div class="form-group">
+                            <label for="comments-queensParkSports">Any other comments?</label>
+                            <textarea id="comments-queensParkSports" name="comments" maxlength="200"></textarea>
+                            <span class="chars-left" id="charsLeft-queensParkSports">200 characters remaining</span>
+                        </div>
+    <input type="hidden" name="project" value="queensParkSports">
+                        <div class="button-group">
+                            <button type="submit" class="submit-btn">Submit</button>
+                            <button type="button" class="close-btn" onclick="closeSurveyForm('queensParkSports')">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+     </div>         <!-- Column 2 needs to end , missed a div -->
+        <!-- Column 3: Ongoing/Completed -->
+<div class="project-grid" id="column3-images">           
+<!-- Sheepbridge Lane -->
+            <div class="project-item">
+                <img src="img/sheepblane.jpg" alt="Sheepbridge Lane">
+            </div>
+            <div class="project-item">
+                <h3>Sheepbridge Lane</h3>
+                <p>An industrial development by Coverland UK Ltd, offering 65,000 sq ft of business space across four plots with excellent transport links. It includes light industrial units, trade counters, and secure premises ranging from 2,250 to 30,000 sq ft, with planning submission expected in Q1 2024.</p>
+            </div>
+            <!-- Sheepbridge Lane Survey-->
+            <div class="survey-section">
+                <button class="survey-button" data-project="sheepbridgeLane">Share Your Feedback</button>
+                <div class="survey-popup" id="survey-sheepbridgeLane" style="display: none;">
+                     <form class="survey-form" action="../includes/survey_handler.php" method="POST">
+                        <h3>Quick Survey</h3>
+                        <div class="form-group">
+                            <label for="postcode-sheepbridgeLane">Your postcode:</label>
+                            <input type="text" id="postcode-sheepbridgeLane" name="postcode" required>
+                            <span class="error" id="postcodeError-sheepbridgeLane"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Did you know about this project?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="knewYes-sheepbridgeLane" name="knew-sheepbridgeLane" value="yes" required>
+                                <label for="knewYes-sheepbridgeLane">Yes</label>
+                                <input type="radio" id="knewNo-sheepbridgeLane" name="knew-sheepbridgeLane" value="no">
+                                <label for="knewNo-sheepbridgeLane">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Does this excite you?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="excitedYes-sheepbridgeLane" name="excited-sheepbridgeLane" value="yes" required>
+                                <label for="excitedYes-sheepbridgeLane">Yes</label>
+                                <input type="radio" id="excitedNo-sheepbridgeLane" name="excited-sheepbridgeLane" value="no">
+                                <label for="excitedNo-sheepbridgeLane">No</label>
+                            </div>
+                        </div>
+    <input type="hidden" name="project" value="sheepbridgeLane">
+                        <div class="form-group">
+                            <label for="comments-sheepbridgeLane">Any other comments?</label>
+                            <textarea id="comments-sheepbridgeLane" name="comments" maxlength="200"></textarea>
+                            <span class="chars-left" id="charsLeft-sheepbridgeLane">200 characters remaining</span>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="submit-btn">Submit</button>
+                            <button type="button" class="close-btn" onclick="closeSurveyForm('sheepbridgeLane')">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Staveley Town Deal -->
+            <div class="project-item">
+                <img src="img/staveley_td.jpg" alt="Staveley Town Deal">
+            </div>
+            <div class="project-item">
+                <h3>Staveley Town Deal</h3>
+                <p>The Staveley Town Deal supports the restoration of the Chesterfield Canal, including 350m of canal channel restoration, new bridges, a lock, upgraded footpaths, and improved town connectivity. Additionally, shop front improvements and public realm works on High Street will enhance the town center and its conservation area.</p>
+            </div>
+            <!-- Staveley Town Deal Survey -->
+            <div class="survey-section">
+                <button class="survey-button" data-project="staveleyTown">Share Your Feedback</button>
+                <div class="survey-popup" id="survey-staveleyTown" style="display: none;">
+                  <form class="survey-form" action="../includes/survey_handler.php" method="POST">
+                        <h3>Quick Survey</h3>
+                        <div class="form-group">
+                            <label for="postcode-staveleyTown">Your postcode:</label>
+                            <input type="text" id="postcode-staveleyTown" name="postcode" required>
+                            <span class="error" id="postcodeError-staveleyTown"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Did you know about this project?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="knewYes-staveleyTown" name="knew-staveleyTown" value="yes" required>
+                                <label for="knewYes-staveleyTown">Yes</label>
+                                <input type="radio" id="knewNo-staveleyTown" name="knew-staveleyTown" value="no">
+                                <label for="knewNo-staveleyTown">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Does this excite you?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="excitedYes-staveleyTown" name="excited-staveleyTown" value="yes" required>
+                                <label for="excitedYes-staveleyTown">Yes</label>
+                                <input type="radio" id="excitedNo-staveleyTown" name="excited-staveleyTown" value="no">
+                                <label for="excitedNo-staveleyTown">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments-staveleyTown">Any other comments?</label>
+                            <textarea id="comments-staveleyTown" name="comments" maxlength="200"></textarea>
+                            <span class="chars-left" id="charsLeft-staveleyTown">200 characters remaining</span>
+                        </div>
+    <input type="hidden" name="project" value="staveleyTown">
+                        <div class="button-group">
+                            <button type="submit" class="submit-btn">Submit</button>
+                            <button type="button" class="close-btn" onclick="closeSurveyForm('staveleyTown')">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- St Helena's Campus -->
+            <div class="project-item">
+                <img src="img/st_hcampus.jpg" alt="St Helena's Campus">
+            </div>
+            <div class="project-item">
+                <h3>St Helena's Campus</h3>
+                <p>The University of Derby's St Helena campus in Chesterfield offers state-of-the-art facilities for Nursing, Health, Business, and Engineering students, with strong ties to local healthcare partners.</p>
+            </div>
+            <!-- St Helenas Campus Survey -->
+            <div class="survey-section">
+                <button class="survey-button" data-project="stHelena">Share Your Feedback</button>
+                <div class="survey-popup" id="survey-stHelena" style="display: none;">
+                        <form class="survey-form" action="../includes/survey_handler.php" method="POST">
+                        <h3>Quick Survey</h3>
+                        <div class="form-group">
+                            <label for="postcode-stHelena">Your postcode:</label>
+                            <input type="text" id="postcode-stHelena" name="postcode" required>
+                            <span class="error" id="postcodeError-stHelena"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Did you know about this project?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="knewYes-stHelena" name="knew-stHelena" value="yes" required>
+                                <label for="knewYes-stHelena">Yes</label>
+                                <input type="radio" id="knewNo-stHelena" name="knew-stHelena" value="no">
+                                <label for="knewNo-stHelena">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Are you happy with the end result?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="satisfiedYes-stHelena" name="satisfied-stHelena" value="yes" required>
+                                <label for="satisfiedYes-stHelena">Yes</label>
+                                <input type="radio" id="satisfiedNo-stHelena" name="satisfied-stHelena" value="no">
+                                <label for="satisfiedNo-stHelena">No</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments-stHelena">Any other comments?</label>
+                            <textarea id="comments-stHelena" name="comments" maxlength="200"></textarea>
+                            <span class="chars-left" id="charsLeft-stHelena">200 characters remaining</span>
+                        </div>
+    <input type="hidden" name="project" value="stHelena">
+                        <div class="button-group">
+                            <button type="submit" class="submit-btn">Submit</button>
+                            <button type="button" class="close-btn" onclick="closeSurveyForm('stHelena')">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+    <!-- Popup container -->
+    <div id="myPopup" class="popup" style="display: none;">
+        <div class="popup-box">
+            <h3 id="popup-title"></h3>
+            <div id="popup-content"></div>
+            <button onclick="closePopup()" class="close-button">Close</button>
+        </div>
+    </div>
+
+    <!-- Javascripts includes -->
+<script src="includes/Projectdata.js"></script>
+<script src="includes/popup.js"></script>
+<script src="includes/navigation.js"></script>
+<script src="includes/accesibility.js"></script>
+<script src="includes/survey.js"></script>
+
+</body>
+</html>
+                            

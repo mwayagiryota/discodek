@@ -1,0 +1,71 @@
+/* Main container for the thoughts section */
+.thoughts-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: block !important;
+    width: 100%;
+    box-sizing: border-box;
+    visibility: visible !important;
+}
+
+/* Styling for the "Share Your Thoughts" button and submit button */
+button.thoughts-button {
+    display: block !important;
+    width: 100% !important;
+    padding: 12px 24px !important;
+    background-color: #4299e1 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    transition: background-color 0.2s;
+    margin-bottom: 10px !important;
+    visibility: visible !important;
+}
+
+/* Hover effect for buttons */
+.thoughts-button:hover {
+    background-color: #3182ce !important;
+}
+
+/* Form container */
+form.thoughts-form {
+    width: 100% !important;
+    margin-top: 15px !important;
+    visibility: visible !important;
+}
+
+/* Textarea styling */
+textarea.thoughts-input {
+    display: block !important;
+    width: 100% !important;
+    min-height: 80px !important;
+    padding: 12px !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    margin-bottom: 10px !important;
+    resize: vertical !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    visibility: visible !important;
+    box-sizing: border-box !important;
+}
+
+/* Ensure visibility for all thoughts sections */
+.project-item .thoughts-section,
+.timeline-item .thoughts-section {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Style for submitted state */
+button.thoughts-button.submitted {
+    background-color: #48bb78 !important;
+}
+
+

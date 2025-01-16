@@ -1,0 +1,91 @@
+/* Accessibility Controls */
+.accessibility-controls {
+    display: flex;              
+    align-items: center;       
+    gap: 1rem;
+    float: right;
+    padding: 8px;                 
+}
+
+/* Style for all accessibility buttons */
+.accessibility-btn {
+    padding: 0.5rem 1rem;      /* Inner spacing */
+    border: 1px solid #ccc;    /* Light gray border */
+    border-radius: 4px;        /* Rounded corners */
+    background: white;         /* White background */
+    cursor: pointer;           /* Hand cursor on hover */
+    display: flex;            
+    align-items: center;       /* Center items vertically */
+    gap: 0.5rem;              /* Space between icon and text */
+    color: #333;              /* Dark text for normal mode */
+}
+
+/* Hover effect for accessibility buttons */
+.accessibility-btn:hover {
+    background: #f0f0f0;       /* Light gray background on hover */
+}
+
+/* Container for text size adjustment buttons */
+.text-size-controls {
+    display: flex;             /* Use flexbox for A+ and A- buttons */
+    gap: 0.5rem;              /* Space between text size buttons */
+}
+
+/* Text size buttons specific styling */
+.text-size-controls .accessibility-btn {
+    background: #3182ce;    /* Blue background */
+    color: white;           /* White text */
+    border: none;
+    min-width: 40px;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.text-size-controls .accessibility-btn:hover {
+    background: #2c5282;    /* Darker blue on hover */
+}
+
+/* High contrast mode styles */
+body.high-contrast .accessibility-btn {
+    background: #000;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+body.high-contrast .text-size-controls .accessibility-btn {
+    background: #000;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+body.high-contrast .accessibility-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+body.high-contrast .header h1 {
+    color: #000;  /* Makes header visible */
+}
+
+body.high-contrast .caption {
+    color: #000; /* Makes polaroid captions visible */
+}
+body.high-contrast .data-table table {
+    background-color: #000;  /* Black background for the whole table */
+}
+/* For the admin dashboard tables */
+body.high-contrast .data-table table th,
+body.high-contrast .data-table table td {
+    color: #fff;  /* White text */
+    background-color: #000;  /* Black background  */
+    border: 1px solid #fff;  /* White borders  */
+}
+
+body.high-contrast .data-table table tr {
+    background-color: #000;  /* Black background for rows */
+}
+
+/* Hover effects  */
+body.high-contrast .data-table table tr:hover {
+    background-color: #333;
+}

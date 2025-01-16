@@ -1,0 +1,34 @@
+/* layout for the main image grid container */
+.image-grid {
+    /* A grid for layout */
+    display: grid;
+    /* 2 equal-width columns */
+    grid-template-columns: repeat(2, 1fr);
+    /* 20px spacing between grid items (both vertical and horizontal) */
+    gap: 20px;
+    max-width: 1200px;
+    /* Centering thhe grid in the page */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+.grid-item {
+    width: 100%;
+}
+
+/* Styles for images inside grid items */
+.grid-item img {
+    /* Make images fill the containers  */
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Styles for image captions */
+.grid-item figcaption {
+    /* Addingg space between image and caption */
+    margin-top: 8px;
+    /* Centering the caption text under the image */
+    text-align: center;
+}

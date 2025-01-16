@@ -1,0 +1,138 @@
+.header {
+   margin-bottom: 30px; /* Space between header and content below */
+}
+
+/* Using Bubblegum Sans font */
+.header h1 {
+   text-align: center;
+   font-family: 'Bubblegum Sans', cursive; 
+   font-size: 48px;
+   color: #4299e1; /* Light blue to match */
+   letter-spacing: 2px; 
+   transition: transform 0.3s ease; /* Hver effect */
+}
+
+/* Interactive hover effect for the title - a bit bigger when hovered */
+.header h1:hover {
+   transform: scale(1.05); /* Increases size by 5% on hover */
+}
+
+/* Styling for header images */
+.header img {
+   display: block;  
+   width: 100%;
+   max-width: 1200px; /* Prevents image from becoming too large */
+   height: auto; 
+   margin: 20px auto;  
+}
+
+/* Main navigation bar styling */
+.topnav {
+   background-color: #4299e1; /* Matches header color theme */
+   overflow: hidden; /* Prevents content from spilling out */
+   border-radius: 8px; /* Rounded corners */
+}
+
+/* Navigation link styling */
+.topnav a {
+   float: left; 
+   color: white;
+   text-align: center;
+   padding: 14px 16px; 
+   text-decoration: none;
+   font-size: 16px;
+}
+
+/* Hover effect for navigation links */
+.topnav a:hover {
+   background-color: #3182ce; /* Darker blue for hover state */
+}
+
+/* Style for currently active/selected navigation link */
+.topnav a.active {
+   background-color: #2b6cb0; /* Even darker blue for active state */
+}
+
+/* Container for accessibility control buttons */
+.accessibility-controls {
+   display: flex;
+   justify-content: flex-end; /* Aligns controls to the right */
+   align-items: center;
+   padding: 10px;
+   gap: 15px; /* Space between controls */
+   background-color: #f5f5f5; /* Light grey background */
+   border-radius: 8px;
+   margin: 10px 0;
+}
+
+/* Individual accessibility button styling */
+.accessibility-btn {
+   display: flex;
+   align-items: center;
+   gap: 5px; 
+   padding: 8px 15px;
+   border: none;
+   border-radius: 4px;
+   background-color: #4299e1;
+   color: black;
+   cursor: pointer;
+   transition: background-color 0.3s; /* Smooth colour transition on hover */
+}
+
+/* Hover effect for accessibility buttons */
+.accessibility-btn:hover {
+   background-color: #3182ce; /* Darker blue on hover */
+}
+
+/* Text size adjustment buttons */
+.text-size-controls {
+   display: flex;
+   gap: 5px; /* Space between size buttons */
+}
+
+/* Style for icons within accessibility buttons */
+.accessibility-btn .icon {
+   font-size: 1.2em; /* Slightly larger than surrounding text */
+}
+
+/* High Contrast Mode Styles - is on when .high-contrast class is active */
+.high-contrast {
+   background-color: black !important; /* Dark background for high contrast */
+   color: white !important; /* Light text for readability */
+}
+
+/* High contrast styles for site title */
+.high-contrast .header h1 {
+   color: white !important; /* Ensures title is visible on dark background */
+}
+
+/* High contrast navigation bar */
+.high-contrast .topnav {
+   background-color: #333 !important; /* Dark grey background */
+}
+
+/* High contrast navigation links */
+.high-contrast .topnav a {
+   color: yellow !important; /* Yellow for maximum visibility */
+}
+
+/* High contrast accessibility controls container */
+.high-contrast .accessibility-controls {
+   background-color: #333 !important; /* Matches nav background */
+}
+
+/* High contrast accessibility buttons */
+.high-contrast .accessibility-btn {
+   background-color: white !important;
+   color: black !important; /* Inverted colors for buttons */
+}
+
+/* High contrast button hover state */
+.high-contrast .accessibility-btn:hover {
+   background-color: #f0f0f0 !important; /* Slightly darker on hover */
+}
+
+/* Base font size setting for the entire site */
+html {
+   font-size: 16px; 
+}
