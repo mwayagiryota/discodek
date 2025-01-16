@@ -4,27 +4,29 @@
 /* Start the session at the beginnning */
 session_start();
 
-// If already logged in, redirect to dashboard
+// If already logged in, redirect to dashboard php file
 if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
     header('Location: admin_dashboard.php');
     exit();
 }
 
 $error = '';
-
+// Checking if form submitted via POST method
+// Get form values, empty string if not provided
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';  // Not username
     $password = $_POST['password'] ?? '';
-    
     //Admin login details
     $admin_email = '';
     $admin_password = ''; 
-    
+    // Check if  match admin credentials
+    // Redirect to dashboard if successful
     if ($email === $admin_email && $password === $admin_password) {
         $_SESSION['admin_logged_in'] = true;
         header('Location: admin_dashboard.php');
         exit();
     } else {
+    // Error message if not matching
         $error = 'Invalid email or password';
     }
 }
