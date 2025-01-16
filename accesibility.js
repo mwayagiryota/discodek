@@ -22,10 +22,10 @@ function updateTextSize() {
     document.documentElement.style.fontSize = currentTextSize + 'px';  // Apply new size to whole page
 }
 
-// Initialize high contrast mode state
+// Starting  high contrast 
 let highContrastEnabled = false;
 
-// Function to toggle high contrast mode
+// Function to turn on high contrast mode
 function toggleHighContrast() {
     console.log('Toggle function called');
     highContrastEnabled = !highContrastEnabled;
@@ -42,5 +42,5 @@ function toggleHighContrast() {
     }
 }
 
-// Alert to see if the file is loaded
+// An alert to see if the file is loaded
 console.log('Accessibility.js loaded');
