@@ -27,7 +27,7 @@
 
 /* Container for text size adjustment buttons */
 .text-size-controls {
-    display: flex;             /* Use flexbox for A+ and A- buttons */
+    display: flex;             /* Using the flexbox for A+ and A- buttons */
     gap: 0.5rem;              /* Space between text size buttons */
 }
 
