@@ -38,7 +38,8 @@ $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 $headers .= "From: Chesterfield Connects <noreply@chesconnect.co.uk>\r\n";
 $headers .= "Return-Path: noreply@chesconnect.co.uk\r\n";
 // Send notification email to admin about who subscribes
-mail('mwaka@live.co.uk', 'New Subscription', $adminBody, $headers);
+// Add my own personal email here
+mail('', 'New Subscription', $adminBody, $headers);
                 //  Welcome email to subscriber with styling.
                 $subscriberHTML = '
                 <!DOCTYPE html>
