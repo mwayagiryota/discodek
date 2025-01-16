@@ -1,7 +1,7 @@
 <?php
-
-DEFINE ('DB_USER', 'chesconn_mwaka');
-DEFINE ('DB_PASSWORD', 'LemonS0da!');
+// Database details
+DEFINE ('DB_USER', '');
+DEFINE ('DB_PASSWORD', '');
 DEFINE ('DB_HOST', 'localhost');
 DEFINE ('DB_NAME', 'chesconn_db1');
 
