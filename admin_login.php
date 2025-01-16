@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
     
     //Admin login details
-    $admin_email = 'mwaka@live.co.uk';
-    $admin_password = 'tha1f00dl0v3r24!'; 
+    $admin_email = '';
+    $admin_password = ''; 
     
     if ($email === $admin_email && $password === $admin_password) {
         $_SESSION['admin_logged_in'] = true;
